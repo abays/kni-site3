@@ -1,0 +1,15 @@
+bases:
+- git::https://github.com/abays/blueprint-kni.git//profiles/production.baremetal/00_install-config
+
+patches:
+- install-config.yaml
+
+patchesJson6902:
+- target:
+    version: v1
+    kind: InstallConfig
+    name: cluster
+  path: install-config.name.patch.yaml
+
+transformers:
+- site-config.yaml
