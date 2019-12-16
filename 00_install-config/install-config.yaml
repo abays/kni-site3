@@ -3,7 +3,7 @@ kind: InstallConfig
 baseDomain: abays.testing
 compute:
  - name: worker
-   replicas: 1
+   replicas: 2
 controlPlane:
    name: master
    platform: {}
@@ -54,6 +54,15 @@ platform:
             # With type: rhcos the following are settings are available
             # pxe: bios|uefi    # pxe boot type either bios (default if not specified) or uefi
             # install_dev: sda  # where to install the operating system (sda is the default)
+       
+      -  name: worker-1
+         role: worker
+         bmc:
+            address: ipmi://10.19.110.8
+            credentialsName: ha-lab-ipmi
+         bootMACAddress: 0C:C4:7A:DB:AC:03
+         sdnMacAddress: 0c:c4:7a:19:6f:7e
+         hardwareProfile: default
 
 pullSecret: 'PULL_SECRET'
 sshKey: |
